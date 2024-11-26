@@ -58,8 +58,7 @@ M1M3 monitoring temperature changes while its transportation and once it is insi
 % You can also use the \input command to include several content files.
 
 \section{Introduction}
-
-The known thermal stress requirements for M1M3 are:
+Keeping thermally safe M1M3 is paramount to ensure the optical performance required by the project. The known thermal stress requirements for M1M3 are:
 \begin{enumerate}
   \item Less than 5\,\textdegree C in temperature variation in the glass surface.
   \item Temperature in the mirror can not change more than 1\,\textdegree C per hour.
@@ -67,7 +66,7 @@ The known thermal stress requirements for M1M3 are:
 
 For mirror transportation, the above mentioned requirements are fulfilled if the temperature differences between two locations are $\leq\,$5 \textdegree C and by avoiding leaving the mirror in locations where temperature changes more than 1\,\textdegree C \backslash hr.
 
-The locations involved in mirror transportation include level 3 (L3) where M1M3 was located until the date of transportation. The hydraulic vertical lift structure (p-flow), the exterior (top of the lift with the mirror raised) and level 8 (L8), where the mirror will be parked on the Telescope Mount Assembly (TMA).
+The locations involved in mirror transportation include level 3 (L3) where M1M3 was located until the date of transportation, the hydraulic vertical lift structure (p-flow), the exterior (top of the lift with the mirror raised) and level 8 (L8), where the mirror will be parked on the Telescope Mount Assembly (TMA).
 
 With the goal of evaluating the safety limits on M1M3 transport to the dome and its temperature once it is installed at the Simonyi Telescope we are interested in retrieving temperature information from two main sets of sensors:
 
@@ -76,7 +75,7 @@ With the goal of evaluating the safety limits on M1M3 transport to the dome and 
   \begin{itemize}
     \item ESS:103 (MTDome).
     \begin{description}
-      \item This sensor is located in the proximity of M1M3.
+      \item This sensor is located inside the dome and in the proximity of M1M3.
       \item[Note:] From October 9 2024 it is renamed as ESS:113. It is the M1M3 humidity sensor.
       \end{description}
     \item ESS:301 (Weather station tower).
@@ -122,7 +121,7 @@ The ticket that triggered this Technote originally was designed to trace back te
 
 \section{Results}
 \subsection{Sensor Set 1: Environmental.}
-The sensors were studied from August 14 to October 2. The mirror transportation started on October 2 at 12:15 local time. Prior the movement, sensor ESS:103 monitored the temperature inside the dome close to the future location of M1M3. Figure \ref{fig_set1_difference} shows the difference sensor ESS:103 and the weather station tracking outside temperature resampling each hour. In the left figure it can be seen that the thermal requirement of less than 5\,\textdegree C in temperature variation in the glass surface was surprased multiple times. Nevertheless, the sensor monitors the air temperature around the cell (future) location and not the glass surface. Beside this, the thermal excess (temperature $\leq$\,$\pm$5\,\textdegree C) was linked to the aperture of the rear access door (RAD) and p-flow. Possibly also linked to dome shutter apperture, still manual with no telemetry, at the moment of writting. This behaviour triggered the Test Cases mentioned on Section \ref{sec_test_cases}. It is worth to note (see Figure \ref{fig_set1_difference}, right) that the mirror movement started when the temperature difference studied here was null.
+The sensors were studied from August 14 to October 2. The mirror transportation started on October 2 at 12:15 local time. Prior the movement, sensor ESS:103 monitored the temperature inside the dome close to the future location of M1M3. Figure \ref{fig_set1_difference} shows the difference in temperature between sensor ESS:103 and the weather station resampling each hour. In the left figure it can be seen that the thermal requirement of less than 5\,\textdegree C in temperature variation in the glass surface was surprased multiple times. Nevertheless, the sensor monitors the air temperature around the cell (future) location and not the glass surface. Beside this, the thermal excess (temperature $\leq$\,$\pm$5\,\textdegree C) was linked to the aperture of the rear access door (RAD) and p-flow. Possibly also linked to dome shutter apperture, still manual with no telemetry, at the moment of writting. This behaviour triggered the Test Cases mentioned on Section \ref{sec_test_cases}. It is worth to note (see Figure \ref{fig_set1_difference}, right) that the mirror movement started when the temperature difference studied here was null.
 
 \begin{figure}[h!]
   \includegraphics[width=8cm]{SITCOMTN-141_figures/Sensor1_1h_delta_temp.png}
@@ -131,26 +130,26 @@ The sensors were studied from August 14 to October 2. The mirror transportation 
   \label{fig_set1_difference}
 \end{figure}
 
-Figure \ref{fig_set1_derivative} shows the derivative per hour on the mirror ambient temperature (\textrm{pandas diff package}). The second thermal stress requirement (temperature in the mirror can not change more than 1\,\textdegree C per hour) was surprased a couple of times in the period studied. A closer look of both events (August 20 and September 25) is shown on Figure \ref{fig_set1_derivative_events}. As previously mentioned, the fast and notorious change in temperature inside the dome was related with flushing through air circulation (aperture shutter/RAD door/louver opening).
+Figure \ref{fig_set1_derivative} shows the derivative per hour on the mirror ambient temperature \footnote{The analysis shown here used \texttt{python.pandas.diff} package (backward finite difference) to calculate the derivatives. To ensuring computational reproducibility the \texttt{python.numpy.gradient} package was also used. The results were comparable.}. The second thermal stress requirement (temperature in the mirror can not change more than 1\,\textdegree C per hour) was surprased a couple of times in the period studied. A closer look of both events (August 20 and September 25) is shown on Figure \ref{fig_set1_derivative_events}. As previously mentioned, the fast and notorious change in temperature inside the dome was related with flushing through air circulation (aperture shutter/RAD door/p-flow rail).
 
 \begin{figure}[h!]
   \centering
   \includegraphics[width=12cm]{SITCOMTN-141_figures/Sensor1_1h_temp_derivative.png}
-  \caption{Rate of temperature change per hour on the M1M3 sensor inside the dome, dashed red lines indicate the second mirror stress thermal requirement, minimum and maximun values are shown as filled areas. Period studied from August 14 to October 2 2024. }
+  \caption{Rate of temperature change per hour on the M1M3 sensor inside the dome, dashed red lines indicate the second mirror stress thermal requirement, temperature minimum and maximun values are shown. Period studied from August 14 to October 2 2024. }
   \label{fig_set1_derivative}
 \end{figure}
 
 \begin{figure}[h!]
   \includegraphics[width=8cm]{SITCOMTN-141_figures/Sensor1_1h_temp_derivative_e1.png}
   \includegraphics[width=8cm]{SITCOMTN-141_figures/Sensor1_1h_temp_derivative_e2.png}
-  \caption{Rate of temperature change per hour on the M1M3 sensor inside the dome, dashed red lines indicate the second mirror stress thermal requirement, minimum and maximun values are shown as filled areas. \textit{Left:} August 20 2024. \textit{Right:} September 25 2024.}
+  \caption{Rate of temperature change per hour on the M1M3 sensor inside the dome, dashed red lines indicate the second mirror stress thermal requirement, temperature minimum and maximun values are shown. \textit{Left:} Detail on the August 20 2024 event. \textit{Right:} Detail on the September 25 2024 event.}
   \label{fig_set1_derivative_events}
 \end{figure}
 
 A dedicated \href{https://summit-lsp.lsst.codes/chronograf/sources/1/dashboards/349?refresh=Paused&lower=2024-09-21T03%3A00%3A00.000Z&upper=2024-09-23T03%3A00%3A00.000Z}{Chronograf dashboard} including the relevant figures was created for the day of transportation.
 
 \subsection{Sensor Set 2: Local temperature loggers.}
-The sensors were studied from September 26 until October 2 when the mirror was moved from L3 to the dome. Figure \ref{fig_set2_raw} shows the temperature data from the local loggers. Three of them are monitoring different cell mirror locations: the center and the extremes on its x-axis. Three additional loggers are focused in monitoring the M1M3 cell exterior, the L3 temperature ambient and the p-flow (lift) temperature. We can see the internal cell temperatures follow in general the same trend with the exception of two events identified as thermal flushing events inside the dome. There is no an apparent gradient in temperature on the mirror extremes. Regarding the environmental temperatures the dispersion among them is larger (M1M3 exterior, L3 ambient and p-flow). The difference between the M1M3 cell exterior logger and the ones at the cell interior was $\lesssim$2\,\textdegree C in the period studied. It is worth to note how the p-flow temperature thermalizes with the L3 ambient when the p-flow roll up doors are manipulated.
+The sensors were studied from September 26 until October 2 when the mirror was moved from L3 to the dome. Figure \ref{fig_set2_raw} shows the temperature data from the local loggers. Three of them were monitoring different cell mirror locations: the center and the extremes on its $x$-axis. Three additional loggers were focused in monitoring the M1M3 ambient temperature. They were located on the cell exterior, one of the L3 walls and the p-flow (lift). We can see that the internal cell temperatures follow in general the same trend with the exception of three events identified as thermal flushing events inside L3. There is no an apparent gradient in temperature on the mirror axial extremes. Regarding the environmental logger temperatures (M1M3 exterior, L3 ambient and p-flow) the dispersion among them is larger. The difference between the M1M3 cell exterior logger and the ones at the cell interior was $\lesssim$2\,\textdegree C in the period studied. It is worth to note how the p-flow temperature thermalizes with the L3 ambient when the p-flow roll up doors are manipulated.
 
 \begin{figure}[h!]
   \centering
@@ -162,15 +161,15 @@ The sensors were studied from September 26 until October 2 when the mirror was m
 \begin{figure}[h!]
   \centering 
   \includegraphics[width=11cm]{SITCOMTN-141_figures/Sensor2_1h_temp_derivative_int_center.png}
-  \caption{Rate of temperature change per hour on the M1M3 cell loggers, dashed red lines indicate the second mirror stress thermal requirement, temperature minimum and maximun values are shown.}
+  \caption{Rate of temperature change per hour on the M1M3 internal cell loggers, dashed red lines indicate the second mirror stress thermal requirement, temperature minimum and maximun values are shown.}
   \label{fig_set2_derivative}
 \end{figure}
 
-In terms of the second thermal stress requirement for M1M3 (rate of temperature change per hour), the temperature gradient on the local temperature loggers can be seen on Figure \ref{fig_set2_derivative}. The loggers that are monitoring the M1M3 center and its extremes surprassed the limits ($\pm$1\,\textdegree C) in a couple of ocassions. Both episodies were traced back and were related with the aperture of the rear access door (RAD) at the Simonyi telescope dome.
+In terms of the second thermal stress requirement for M1M3 (rate of temperature change per hour), the temperature gradient on the local temperature loggers can be seen on Figure \ref{fig_set2_derivative}. The loggers that are monitoring the M1M3 cell center and its axial extremes surprassed the limits ($\pm$1\,\textdegree C) in a couple of ocassions. Both episodies were traced back and were related with the aperture of the rear access door (RAD) at the Simonyi telescope dome.
 
 \newpage
 \section{Conclusions}
-In the previous weeks to the M1M3 movement, we had gradient excursions up to 1\,\textdegree C and temperature differences (inside/outside dome) surpasing the $\pm$5\,\textdegree C limit. Those events were generally linked with dome/L3 thermal flushing using either the main shutters, the RAD or the roll up door at L3. Since the mirror is going to remain inside the dome for the near future, the largest impact on M1M3 temperature changes are the dome aperture mechanisms until the M1M3 thermal system is on place. 
+In the previous weeks to the M1M3 movement, we had gradient excursions up to 1\,\textdegree C and temperature differences (inside/outside dome) surpasing the $\pm$5\,\textdegree C limit. Those events were generally linked with dome/L3 thermal flushing using either the main shutters, the RAD or the roll up door at L3. On the date and time of the mirror transportation, the thermal strees requirements for M1M3 were fulfilled. Since the mirror now remains parked on the Telescope Mount Assembly (TMA) inside the dome, the largest impact on M1M3 temperature changes are dome aperture mechanisms unless the M1M3 thermal system is on place. 
 
 
 \section{}
